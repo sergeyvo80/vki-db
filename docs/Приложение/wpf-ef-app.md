@@ -6,6 +6,8 @@
 Это технология, которая создает "мост" между объектно-ориентированным миром вашего кода (например, на Python, Java, C#) и реляционным миром базы данных (таблицы, строки, столбцы). 
 В нашем приложении мы будем использовать [ORM EntityFramework](/docs/Приложение/entity-framework.md)
 
+[Так же можно использовать собственные SQL запросы](/docs/Приложение/sql.md)
+
 ## 1. Создать приложение
 - Visual Studio 2022
 - .net 8
@@ -18,7 +20,7 @@
 - Microsoft.EntityFrameworkCore.Tools 8.0.22
 
 ## 3. Добавьте connection string в App.config
-````
+```xml
 <configuration>
     <connectionStrings>
         <add name="SchoolContext"
@@ -26,7 +28,7 @@
              providerName="System.Data.SqlClient" />
     </connectionStrings>
 </configuration>
-````
+```
 ## 4. Подключение к БД
 Меню -> Средства -> Подключиться к базе данных, (БД которая была создана по ER диаграмме)
 
@@ -41,7 +43,7 @@ Scaffold-DbContext "Data Source=DBSRV\OV2025;Initial Catalog=Ваша БД;Integ
 ## 6. Создать грид с данными и фильтром
 
 ### 6.1 MainWindow.xaml пример
-````
+```xml
 <Window x:Class="YourApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml&quot;
@@ -77,11 +79,11 @@ Scaffold-DbContext "Data Source=DBSRV\OV2025;Initial Catalog=Ваша БД;Integ
         </StackPanel>
     </Grid>
 </Window>
-````
+```
 
 ### 6.2 MainWindow.xaml.css пример
 
-````
+```csharp
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -174,4 +176,4 @@ public partial class MainWindow : Window
         base.OnClosed(e);
     }
 }
-````
+```

@@ -9,7 +9,8 @@
   - [1. Database First](#1-database-first)
   - [2. Code First (самый популярный)](#2-code-first-самый-популярный)
     - [Конфигурация моделей](#конфигурация-моделей)
-    - [Через Fluent API (в DbContext):](#через-fluent-api-в-dbcontext)
+  - [Через атрибуты:](#через-атрибуты)
+  - [Через Fluent API (в DbContext):](#через-fluent-api-в-dbcontext)
   - [Миграции - мощный инструмент EF](#миграции---мощный-инструмент-ef)
     - [Создание миграции](#создание-миграции)
     - [Применение миграции к БД](#применение-миграции-к-бд)
@@ -24,22 +25,22 @@ EF — это "мост" между вашими C# классами и реля
 
 ## Основные компоненты
 ### 1. DbContext - основной класс для работы с БД
-````
+```csharp
 public class AppDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Order> Orders { get; set; }
 }
-````
+```
 
 ### 2. DbSet - представляет таблицу в БД
-````
+```csharp
 // DbSet в DbContext
 public DbSet<Product> Products { get; set; }
-````
+```
 
 ### 3. Модели (Entity Classes) - C# классы, которые отображаются на таблицы БД
-````
+```csharp
 public class User
 {
     public int Id { get; set; }
@@ -55,20 +56,20 @@ public class Order
     public int UserId { get; set; }
     public User User { get; set; }
 }
-````
+```
 
 ### Как это работает на практике
 Без Entity Framework:
-````
+```csharp
 // Ручная работа с SQL
 var connection = new SqlConnection(connectionString);
 var command = new SqlCommand("SELECT * FROM Users WHERE Id = @id", connection);
 command.Parameters.AddWithValue("@id", userId);
 // ... и т.д. - много шаблонного кода
-````
+```
 
 С Entity Framework:
-````
+```csharp
 // Простая и понятная работа с объектами
 using var context = new AppDbContext();
 
@@ -89,7 +90,7 @@ context.SaveChanges();
 context.Users.Remove(user);
 context.SaveChanges();
 Основные подходы работы
-````
+```
 
 ## 1. Database First
 Начинаем с существующей базы данных
@@ -105,7 +106,7 @@ EF создает структуру БД на основе этих класс�
 
 Современный и гибкий подход
 
-````
+```csharp
 // Code First пример
 public class Product
 {
@@ -115,11 +116,11 @@ public class Product
 }
 
 // Миграция создаст таблицу Products на основе этого класса
-````
+```
 
 ### Конфигурация моделей
-Через атрибуты:
-````
+## Через атрибуты:
+```csharp
 public class User
 {
     [Key]
@@ -132,10 +133,11 @@ public class User
     [EmailAddress]
     public string Email { get; set; }
 }
-````
+```
 
-### Через Fluent API (в DbContext):
-````
+## Через Fluent API (в DbContext):
+
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<User>()
@@ -151,7 +153,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         .WithOne(o => o.User)
         .HasForeignKey(o => o.UserId);
 }
-````
+```
 
 ## Миграции - мощный инструмент EF
 Миграции позволяют управлять изменениями схемы БД через код:
