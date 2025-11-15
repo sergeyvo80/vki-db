@@ -7,3 +7,5 @@
 
 ## Разработка приложения
 - ### [Создание десктоп приложения WPF (Windows Presentation Foundation) , EntityFramework](docs/Приложение/wpf-ef-app.md)
+
+  - #### [ORM EntityFramework](docs/Приложение/entity-framework.md)
