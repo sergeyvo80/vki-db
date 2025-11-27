@@ -1,4 +1,8 @@
 # БД - разработка, администрирование и защита
+
+## SQL
+- ### [Реализация дерева в SQL](docs/sql/sql-trees.md)
+
 ## Проектирование ER диаграмм и разработка приложения ТЗ
 - ### [Зоомагазин](docs/Зоомагазин.md)
 - ### [Клининговая компания](docs/Клининговая-компания.md)
@@ -7,6 +11,8 @@
 
 ## Разработка приложения
 - ### [Создание десктоп приложения WPF (Windows Presentation Foundation) , EntityFramework](docs/Приложение/wpf-ef-app.md)
+- ### [ORM EntityFramework](docs/Приложение/entity-framework.md)
+- ### [Выполнения собственных SQL запросов](docs/Приложение/sql.md)
+- ### [LINQ](docs/Приложение/LINQ.md)
+- ### [ADO.NET](docs/Приложение/ADO.NET.md)
 
-  - #### [ORM EntityFramework](docs/Приложение/entity-framework.md)
-  - #### [Выполнения собственных SQL запросов](docs/Приложение/sql.md)
