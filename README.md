@@ -11,6 +11,7 @@
 
 ## Разработка приложения
 - ### [Создание десктоп приложения WPF (Windows Presentation Foundation) , EntityFramework](docs/Приложение/wpf-ef-app.md)
+- ### [Несколько способов увидеть SQL запросы, которые формирует Entity Framework](docs/Приложение/sql-log.md)
 - ### [ORM EntityFramework](docs/Приложение/entity-framework.md)
 - ### [Выполнения собственных SQL запросов](docs/Приложение/sql.md)
 - ### [LINQ](docs/Приложение/LINQ.md)
